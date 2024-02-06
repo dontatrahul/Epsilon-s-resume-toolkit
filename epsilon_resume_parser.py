@@ -1,7 +1,7 @@
 import openai
 import streamlit as st
 from PyPDF2 import PdfReader
-openai.api_key = "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"
+
 
 
 
@@ -21,7 +21,7 @@ def text_extracter( resume):
 
 def json_object(text):
     prompt = "Given a resume text, generate a JSON object with the following details: name, email, phone number, education, skills, and experience. Ensure that the JSON object includes only these key fields with their corresponding values. Exclude any additional information.if particular feilds mentioned previously are missing kindly avoid adding the to the jason."
-    
+    openai.api_key = "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"
     chatOutput = openai.ChatCompletion.create(model="gpt-3.5-turbo-16k",
                                               messages=[{"role": "system",
                                                          "content": "You are a helpful assistant designed to output JSON"},
