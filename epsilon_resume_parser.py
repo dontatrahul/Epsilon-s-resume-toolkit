@@ -1,8 +1,9 @@
 import openai
 import streamlit as st
 from PyPDF2 import PdfReader
+import os
 
-
+openai.api_key = os.getenv("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")
 
 
 #creating a pdf reader object
@@ -21,7 +22,7 @@ def text_extracter( resume):
 
 def json_object(text):
     prompt = "Given a resume text, generate a JSON object with the following details: name, email, phone number, education, skills, and experience. Ensure that the JSON object includes only these key fields with their corresponding values. Exclude any additional information.if particular feilds mentioned previously are missing kindly avoid adding the to the jason."
-    openai.api_key = "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"
+    
     chatOutput = openai.ChatCompletion.create(model="gpt-3.5-turbo-16k",
                                               messages=[{"role": "system",
                                                          "content": "You are a helpful assistant designed to output JSON"},
@@ -36,7 +37,7 @@ def interview_ques(data,no_of_ques,job_title):
     prompt = f'''Generate interview questions for a candidate applying for the job interview based on the given resume extract.
     Generate {no_of_ques} interview questions for a candidate applying for {job_title}.Mke sure that the questions are tailor made for the given resume. delve into his work experience and skillset keeping in mind the job title and its requirement. Produce questions that human like. Do not trail the generated questions with unwanted texts.
     '''
-    openai.api_key = "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"
+    
     chatOutput = openai.ChatCompletion.create(model="gpt-3.5-turbo-16k",
                                               messages=[{"role": "system",
                                                          "content": "You are an expert interviewer skilled at producing questions from a json object of a resume"},
