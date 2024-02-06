@@ -3,7 +3,7 @@ import streamlit as st
 from PyPDF2 import PdfReader
 import os
 
-openai.api_key = os.getenv("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")
+openai.api_key = os.getenv(st.secrets["api_tk"])
 
 
 #creating a pdf reader object
